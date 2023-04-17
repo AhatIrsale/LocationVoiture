@@ -28,4 +28,17 @@ class Voiture(models.Model):
     Agence = models.ForeignKey(Agence,on_delete=models.CASCADE())
     def __str__(self):
         return f"{self.matricule}"
+class Client(models.Model):
+    nom = models.CharField(max_length=50)
+    tel = models.CharField(max_length=50)
+    mail = models.CharField(max_length=50)
+    status = models.BooleanField(default=True)
+    car = models.ManyToManyField(Voiture,through='Reservation')
+class Reservation(models.Model):
+    voiture = models.ForeignKey(Voiture, on_delete=models.CASCADE())
+    client = models.ForeignKey(Client, on_delete=models.CASCADE())
+    dateStart = models.DateField
+    dateEnd = models.DateField
+    tarif = models.CharField(max_length=50)
+    statusPayment = models.BooleanField(default=True)
 # Create your models here.
