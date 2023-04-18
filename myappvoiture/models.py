@@ -5,7 +5,7 @@ class Modele(models.Model):
     capacitie = models.FloatField()
     attach_cat = models.CharField(max_length=40)
     clim = models.BooleanField()
-    denomination = models.IntegerField
+    denomination = models.IntegerField()
     marque = models.CharField()
     nb_passag = models.IntegerField()
     nb_perms = models.IntegerField()
@@ -37,8 +37,8 @@ class Client(models.Model):
 class Reservation(models.Model):
     voiture = models.ForeignKey(Voiture, on_delete=models.CASCADE())
     client = models.ForeignKey(Client, on_delete=models.CASCADE())
-    dateStart = models.DateField
-    dateEnd = models.DateField
+    dateStart = models.DateField()
+    dateEnd = models.DateField()
     tarif = models.CharField(max_length=50)
-    statusPayment = models.BooleanField(default=True)
+    statusPayment = models.BooleanField(default=False)
 # Create your models here.
