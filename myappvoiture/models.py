@@ -6,7 +6,7 @@ class Modele(models.Model):
     attach_cat = models.CharField(max_length=40)
     clim = models.BooleanField()
     denomination = models.IntegerField()
-    marque = models.CharField()
+    marque = models.CharField(max_length=40)
     nb_passag = models.IntegerField()
     nb_perms = models.IntegerField()
     type = models.CharField(max_length=50)
@@ -24,8 +24,8 @@ class Agence(models.Model):
 
 class Voiture(models.Model):
     matricule = models.CharField(max_length=50)
-    modele = models.ForeignKey(Modele,on_delete=models.CASCADE())
-    Agence = models.ForeignKey(Agence,on_delete=models.CASCADE())
+    modele = models.ForeignKey(Modele,on_delete=models.CASCADE)
+    Agence = models.ForeignKey(Agence,on_delete=models.CASCADE)
     def __str__(self):
         return f"{self.matricule}"
 class Client(models.Model):
@@ -35,8 +35,8 @@ class Client(models.Model):
     status = models.BooleanField(default=True)
     car = models.ManyToManyField(Voiture,through='Reservation')
 class Reservation(models.Model):
-    voiture = models.ForeignKey(Voiture, on_delete=models.CASCADE())
-    client = models.ForeignKey(Client, on_delete=models.CASCADE())
+    voiture = models.ForeignKey(Voiture, on_delete=models.CASCADE)
+    client = models.ForeignKey(Client, on_delete=models.CASCADE)
     dateStart = models.DateField()
     dateEnd = models.DateField()
     tarif = models.CharField(max_length=50)
