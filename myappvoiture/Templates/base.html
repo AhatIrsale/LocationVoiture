@@ -2,9 +2,12 @@
 <html lang="zxx">
 
 
-<!-- Mirrored from www.madebydesignesia.com/themes/rentaly/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Apr 2023 23:03:03 GMT -->
 <head>
     {% load static %}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/designesia.js' %} "></script>
+    <script src="{% static 'js/form.js' %}"></script>
     <title>Rentaly - Multipurpose Vehicle Car Rental Website Template</title>
     <link rel="icon" href="{% static 'images/icon.png' %}"  type="image/gif" sizes="16x16">
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
@@ -24,6 +27,10 @@
 </head>
 
 <body>
+<div id="wrapper">
+
+        <!-- page preloader begin -->
+        <div id="de-preloader"></div>
 <header class="transparent header-light scroll-light has-topbar">
             <div id="topbar" class="topbar-dark text-light">
                 <div class="container">
@@ -65,7 +72,7 @@
                             </div>
                             <div class="de-flex-col header-col-mid">
                                 <ul id="mainmenu">
-                                    <li><a class="menu-item" href="index-2.html">Home</a>
+                                    <li><a class="menu-item" href="{% static 'index-2.html' %}">Home</a>
                                         <ul>
                                             <li><a class="menu-item" href="index-2.html">Homepage 1</a></li>
                                             <li><a class="menu-item" href="index-3.html">Homepage 2</a></li>
@@ -147,11 +154,11 @@
                 </div>
             </div>
         </header>
-<div class="container">
+
     {% block content %}
 
     {%endblock%}
-</div>
+
  <footer class="text-light">
             <div class="container">
                 <div class="row g-custom-x">
@@ -225,5 +232,7 @@
                 </div>
             </div>
         </footer>
+</div>
 </body>
+
 </html>
