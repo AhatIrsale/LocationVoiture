@@ -1,4 +1,7 @@
 from django.db import models
+from datetime import datetime
+
+
 class Modele(models.Model):
     age_minimum= models.IntegerField()
     airbag =  models.CharField(max_length=50)
@@ -37,8 +40,60 @@ class Client(models.Model):
 class Reservation(models.Model):
     voiture = models.ForeignKey(Voiture, on_delete=models.CASCADE)
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
-    dateStart = models.DateField()
-    dateEnd = models.DateField()
+    dateStart = models.DateTimeField(default=datetime.now, blank=True)
+    dateEnd = models.DateTimeField(default=datetime.now, blank=True)
     tarif = models.CharField(max_length=50)
     statusPayment = models.BooleanField(default=False)
+
+
+
+
+
+class Voiture1(models.Model):
+    Nom = models.CharField(max_length=50)
+    Description = models.CharField(max_length=1000)
+    Daily_rate = models.IntegerField(default=0)
+    Bdy = models.CharField(max_length=50)
+    Siege = models.IntegerField(null=True)
+    Porte = models.IntegerField(null=True)
+    Bagage = models.IntegerField(null=True)
+    Carburants = models.CharField(max_length=50)
+    Moteur = models.IntegerField(null=True)
+    Anne = models.IntegerField(null=True)
+    Kilometrage = models.IntegerField(null=True)
+    transmission = models.CharField(max_length=50)
+    dure  = models.CharField(max_length=50)
+    Fueleco = models.FloatField(null=True)
+    color_exterieur=models.CharField(max_length=50)
+    color_inter = models.CharField(max_length=50)
+    photo1 = models.ImageField()
+    photo2 = models.ImageField()
+    photo3 = models.ImageField()
+    photo4 = models.ImageField()
+
+    def __str__(self):
+        return f"{self.Nom}"
+
+class Client1(models.Model):
+    Username = models.CharField(max_length=50)
+    emai = models.EmailField()
+    Pswd = models.CharField(max_length=30)
+    Language = models.CharField(max_length=50)
+    HourFormat = models.CharField(max_length=40)
+    def __str__(self):
+        return f"{self.Username}"
+
+class Reservation1(models.Model):
+    voiture = models.ForeignKey(Voiture1,on_delete=models.CASCADE,null=True)
+    client = models.ForeignKey(Client1, on_delete=models.CASCADE)
+    lieu_A = models.CharField(max_length=60)
+    lieu_B = models.CharField(max_length=60)
+    dateA = models.DateTimeField(default=datetime.now, blank=True)
+    dateB = models.DateTimeField(default=datetime.now, blank=True)
+    def __str__(self):
+        return f"Reservation {self.pk}: {self.client} - {self.lieu_A} to {self.lieu_B}"
+
+
+
+
 # Create your models here.
