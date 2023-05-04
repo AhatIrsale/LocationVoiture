@@ -38,33 +38,37 @@
 
                         <div id="items-carousel" class="owl-carousel wow fadeIn">
 
+                            
+
+                    {% for v in voitures %}
                             <div class="col-lg-12">
                                 <div class="de-item mb30">
                                     <div class="d-img">
-                                        <img src="{% static 'images/cars/jeep-renegade.jpg' %}" class="img-fluid" alt="">
+                                        <img src="{% static v.photo1 %}" class="img-fluid" alt="">
                                     </div>
                                     <div class="d-info">
                                         <div class="d-text">
-                                            <h4>Jeep Renegade</h4>
+                                            <h4>{{v.Nom}}</h4>
                                             <div class="d-item_like">
                                                 <i class="fa fa-heart"></i><span>74</span>
                                             </div>
                                             <div class="d-atr-group">
-                                                <span class="d-atr"><img src="{% static 'images/icons/1.svg' %} " alt="">5</span>
-                                                <span class="d-atr"><img src="{% static 'images/icons/2.svg' %}" alt="">2</span>
-                                                <span class="d-atr"><img src="{% static 'images/icons/3.svg' %}" alt="">4</span>
-                                                <span class="d-atr"><img src="{% static 'images/icons/4.svg' %}" alt="">SUV</span>
+                                                <span class="d-atr"><img src="{% static 'images/icons/1.svg' %} " alt="">{{v.Siege}}</span>
+                                                <span class="d-atr"><img src="{% static 'images/icons/2.svg' %}" alt="">{{v.Porte}}</span>
+                                                <span class="d-atr"><img src="{% static 'images/icons/3.svg' %}" alt="">{{v.Bagage}}</span>
+                                                <span class="d-atr"><img src="{% static 'images/icons/4.svg' %}" alt="">{{v.Bdy}}</span>
                                             </div>
                                             <div class="d-price">
-                                                Daily rate from <span>$265</span>
+                                                Daily rate from <span>${{v.Daily_rate}}</span>
                                                 <a class="btn-main" href="car-single.html">Rent Now</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            {%endfor%}
 
-                            <div class="col-lg-12">
+                       <!--     <div class="col-lg-12">
                                 <div class="de-item mb30">
                                     <div class="d-img">
                                         <img src=" {% static 'images/cars/bmw-m5.jpg' %} " class="img-fluid" alt="">
@@ -192,7 +196,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
 
                         </div>
 
