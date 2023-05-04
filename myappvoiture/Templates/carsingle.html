@@ -41,8 +41,9 @@
                         </div>
 
                         <div class="col-lg-3">
-                            <h3>BMW M2 2020</h3>
-                            <p>The BMW M2 is the high-performance version of the 2 Series 2-door coupé. The first generation of the M2 is the F87 coupé and is powered by turbocharged.</p>
+                            <h3>test: {{car.Nom}} </h3>
+                            <p>{{car.Description}}
+                                The BMW M2 is the high-performance version of the 2 Series 2-door coupé. The first generation of the M2 is the F87 coupé and is powered by turbocharged.</p>
 
                             <div class="spacer-10"></div>
 
@@ -50,55 +51,55 @@
                             <div class="de-spec">
                                 <div class="d-row">
                                     <span class="d-title">Body</span>
-                                    <spam class="d-value">Sedan</spam>
+                                    <spam class="d-value">{{car.Bdy}}</spam>
                                 </div>
                                 <div class="d-row">
                                     <span class="d-title">Seat</span>
-                                    <spam class="d-value">2 seats</spam>
+                                    <spam class="d-value">{{car.Siege}} seats</spam>
                                 </div>
                                 <div class="d-row">
                                     <span class="d-title">Door</span>
-                                    <spam class="d-value">2 doors</spam>
+                                    <spam class="d-value">{{car.Porte}} doors</spam>
                                 </div>
                                 <div class="d-row">
                                     <span class="d-title">Luggage</span>
-                                    <spam class="d-value">150</spam>
+                                    <spam class="d-value">{{car.Bagage}}</spam>
                                 </div>
                                 <div class="d-row">
                                     <span class="d-title">Fuel Type</span>
-                                    <spam class="d-value">Hybird</spam>
+                                    <spam class="d-value">{{car.Carburants}}</spam>
                                 </div>
                                 <div class="d-row">
                                     <span class="d-title">Engine</span>
-                                    <spam class="d-value">3000</spam>
+                                    <spam class="d-value">{{car.Moteur}}</spam>
                                 </div>
                                 <div class="d-row">
                                     <span class="d-title">Year</span>
-                                    <spam class="d-value">2020</spam>
+                                    <spam class="d-value">{{car.Anne}}</spam>
                                 </div>
                                 <div class="d-row">
                                     <span class="d-title">Mileage</span>
-                                    <spam class="d-value">200</spam>
+                                    <spam class="d-value">{{car.Kilometrage}}</spam>
                                 </div>
                                 <div class="d-row">
                                     <span class="d-title">Transmission</span>
-                                    <spam class="d-value">Automatic</spam>
+                                    <spam class="d-value">{{car.transmission}}</spam>
                                 </div>
                                 <div class="d-row">
                                     <span class="d-title">Drive</span>
-                                    <spam class="d-value">4WD</spam>
+                                    <spam class="d-value">{{car.dure}}</spam>
                                 </div>
                                 <div class="d-row">
                                     <span class="d-title">Fuel Economy</span>
-                                    <spam class="d-value">18.5</spam>
+                                    <spam class="d-value">{{car.Fueleco}}</spam>
                                 </div>
                                 <div class="d-row">
                                     <span class="d-title">Exterior Color</span>
-                                    <spam class="d-value">Blue Metalic</spam>
+                                    <spam class="d-value">{{car.color_exterieur}}</spam>
                                 </div>
                                 <div class="d-row">
                                     <span class="d-title">Interior Color</span>
-                                    <spam class="d-value">Black</spam>
+                                    <spam class="d-value">{{car.color_inter}}</spam>
                                 </div>
                             </div>
 
@@ -116,7 +117,7 @@
                         <div class="col-lg-3">
                             <div class="de-price text-center">
                                 Daily rate
-                                <h3>$265</h3>
+                                <h3>${{car.Daily_rate}}</h3>
                             </div>
                             <div class="spacer-30"></div>
                             <div class="de-box mb25">

@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.views.generic import DetailView
 
 from myappvoiture.models import *
 
@@ -19,4 +20,8 @@ def orders(request):
 def list_voitures(request):
     voitures = Voiture1.objects.all()
     return render(request,'test.html',{'voitures':voitures})
+class CarDetail(DetailView):
+    model = Voiture1
+    template_name = 'carsingle.html'
+    context_object_name = 'car'
 # Create your views here.
