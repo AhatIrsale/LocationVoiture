@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from django.contrib.auth.hashers import make_password, check_password
 
 
 class Modele(models.Model):
@@ -66,6 +67,10 @@ class Voiture1(models.Model):
     Fueleco = models.FloatField(null=True)
     color_exterieur=models.CharField(max_length=50)
     color_inter = models.CharField(max_length=50)
+    BL = models.BooleanField(default=False,null=True)
+    MP = models.BooleanField(default=False,null=True)
+    CL = models.BooleanField(default=False,null=True)
+    Sunroof = models.BooleanField(default=False,null=True)
     photo1 = models.ImageField()
     photo2 = models.ImageField()
     photo3 = models.ImageField()
@@ -76,12 +81,20 @@ class Voiture1(models.Model):
 
 class Client1(models.Model):
     Username = models.CharField(max_length=50)
-    emai = models.EmailField()
-    Pswd = models.CharField(max_length=30)
-    Language = models.CharField(max_length=50)
-    HourFormat = models.CharField(max_length=40)
+    email = models.EmailField(unique=True,null=True)
+    Pswd = models.CharField(max_length=255)
+    Phone = models.IntegerField(null=True)
+    Language = models.CharField(max_length=50,null=True)
+    HourFormat = models.CharField(max_length=40,null=True)
+
+    def save(self, *args, **kwargs):
+        self.Pswd = make_password(self.Pswd)
+        super().save(*args, **kwargs)
+
+    def check_password(self, raw_password):
+        return check_password(raw_password, self.Pswd)
     def __str__(self):
-        return f"{self.Username}"
+        return f"{self.email}"
 
 class Reservation1(models.Model):
     voiture = models.ForeignKey(Voiture1,on_delete=models.CASCADE,null=True)
