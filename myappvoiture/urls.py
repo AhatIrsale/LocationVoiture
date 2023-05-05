@@ -15,4 +15,12 @@ urlpatterns = [
     path('carsingle', views.carsingle, name='carsingle'),
     path('profil', views.profil, name='profil'),
     path('orders', views.orders, name='orders'),
+    path('about', views.about, name='about'),
+    path('carlist', views.carlist, name='carlist'),
+    path('booking', views.booking, name='booking'),
+    path('register', views.register, name='register'),
+    path('wishlist', views.wishlist, name='wishlist'),
+    path('cars', views.Cars, name='cars'),
+    path('addreservation', views.add_reservation, name='addreservation'),
+    path('update/<int:pk>/', views.client1_update, name='update'),
 ]

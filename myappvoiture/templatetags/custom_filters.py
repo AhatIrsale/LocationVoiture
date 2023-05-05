@@ -4,7 +4,7 @@ register = template.Library()
 
 @register.filter
 def masked_password(password):
-    """
-    Returns a masked password with asterisks.
-    """
-    return '*' * len(password)
+    print(f"masked_password: input: {password}")
+    masked = '*' * len(password)
+    print(f"masked_password: output: {masked}")
+    return masked

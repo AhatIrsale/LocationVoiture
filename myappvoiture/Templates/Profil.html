@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-
+{% load custom_filters %}
 <div class="no-bottom no-top zebra" id="content">
             <div id="top"></div>
             {% load static %}
@@ -27,21 +27,20 @@
                             <div class="card p-4 rounded-5">
                                 <div class="profile_avatar">
                                     <div class="profile_img">
-                                        <img src="{% static 'images/profile/1.jpg' %}" alt="">
+                                        <img src="{% static 'images/user.WEBP' %}" alt="">
                                     </div>
                                     <div class="profile_name">
                                         <h4>
-                                            Monica Lucas
-                                            <span class="profile_username text-gray">monica@rentaly.com</span>
+                                            {{client.Username}}
+                                            <span class="profile_username text-gray">{{client.email}}</span>
                                         </h4>
                                     </div>
                                 </div>
                                 <div class="spacer-20"></div>
                                 <ul class="menu-col">
-                                    <li><a href="account-dashboard.html"><i class="fa fa-home"></i>Dashboard</a></li>
-                                    <li><a href="account-profile.html" class="active"><i class="fa fa-user"></i>My Profile</a></li>
-                                    <li><a href="account-booking.html"><i class="fa fa-calendar"></i>My Orders</a></li>
-                                    <li><a href="account-favorite.html"><i class="fa fa-car"></i>My Favorite Cars</a></li>
+                                    <li><a href="/profil" class="active"><i class="fa fa-user"></i>My Profile</a></li>
+                                    <li><a href="/orders"><i class="fa fa-calendar"></i>My Orders</a></li>
+                                    <li><a href="/wishlist"><i class="fa fa-car"></i>My Favorite Cars</a></li>
                                     <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i>Sign Out</a></li>
                                 </ul>
                             </div>
@@ -51,12 +50,12 @@
                             <div class="card p-4  rounded-5">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <form id="form-create-item" class="form-border" method="post" action="https://www.madebydesignesia.com/themes/rentaly/email.php">
+                                        <form  class="form-border" method="post" action="{% url 'update' pk=client.pk %}">
+                                             {% csrf_token %}
                                         <div class="de_tab tab_simple">
 
                                             <ul class="de_nav">
                                                 <li class="active"><span>Profile</span></li>
-                                                <li><span>Notifications</span></li>
                                             </ul>
 
                                             <div class="de_tab_content">
@@ -64,108 +63,63 @@
                                                     <div class="row">
                                                         <div class="col-lg-6 mb20">
                                                             <h5>Username</h5>
-                                                            <input type="text" name="username" id="username" class="form-control" placeholder="Enter username" />
+                                                            <input type="text" name="Username" id="Username" class="form-control" value={{client.Username}} />
                                                         </div>
                                                         <div class="col-lg-6 mb20">
                                                             <h5>Email Address</h5>
-                                                            <input type="text" name="email_address" id="email_address" class="form-control" placeholder="Enter email" />
+                                                            <input type="text" name="email" id="email" class="form-control" value="{{client.email}}" />
+                                                        </div>
+
+                                                        <div class="col-lg-6 mb20">
+                                                            <h5> Password</h5>
+                                                            <input type="text" name="Pswd" id="Pswd" class="form-control" value="{{client.Pswd|masked_password}}" />
                                                         </div>
                                                         <div class="col-lg-6 mb20">
-                                                            <h5>New Password</h5>
-                                                            <input type="Password" name="user_password" id="user_password" class="form-control" placeholder="********" />
-                                                        </div>
-                                                        <div class="col-lg-6 mb20">
-                                                            <h5>Re-enter Password</h5>
-                                                            <input type="Password" name="user_password_re-enter" id="user_password_re-enter" class="form-control" placeholder="********" />
+                                                            <h5>Phone</h5>
+                                                            <input type="text"  name="Phone" id="Phone"  class="form-control" value="{{client.Phone}}" />
                                                         </div>
                                                         <div class="col-md-6 mb20">
                                                             <h5>Language</h5>
                                                             <p class="p-info">Select your prefered language.</p>
                                                             <div id="select_lang" class="dropdown fullwidth">
-                                                                <a href="#" class="btn-selector">English</a>
-                                                                <ul>
-                                                                    <li class="active"><span>English</span></li>
-                                                                    <li><span>France</span></li>
-                                                                    <li><span>German</span></li>
-                                                                    <li><span>Japan</span></li>
-                                                                    <li><span>Italy</span></li>
-                                                                </ul>
+                                                            <select  name="Language" id="Language" class="form-select" aria-label="Default select example">
+                                                                <option selected >{{client.Language}}</option>
+                                                                {% if client.Language != "France" %}
+                                                                 <option value="France">France</option>
+                                                                {% endif %}
+                                                                {% if client.Language != "German" %}
+                                                                <option value="German">German</option>
+                                                                {% endif %}
+                                                                {% if client.Language != "English" %}
+                                                                <option value="English">English</option>
+                                                                {% endif %}
+                                                            </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 mb20">
                                                             <h5>Hour Format</h5>
                                                             <p class="p-info">Select your prefered language.</p>
                                                             <div id="select_hour_format" class="dropdown fullwidth">
-                                                                <a href="#" class="btn-selector">24-hour</a>
-                                                                <ul>
-                                                                    <li class="active"><span>24-hour</span></li>
-                                                                    <li><span>12-hour</span></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
+                                                                <select name="HourFormat" id="HourFormat"  class="form-select" aria-label="Default select example">
+                                                              <option selected>{{client.HourFormat}}</option>
+                                                                    {% if client.HourFormat != "12-hour" %}
+                                                              <option value="12-hour">12-hour</option>
+                                                                    {% endif %}
+                                                                    {% if client.HourFormat != "24-hour" %}
+                                                              <option value="24-hour">24-hour</option>
+                                                                    {% endif %}
+                                                                </select>
+                                                            </div></div>
+
                                                     </div>
                                                 </div>
 
-                                                <div class="tab-2">
-                                                    <div class="row">
-                                                        <div class="col-md-6 mb-sm-20">
-                                                            <div class="switch-with-title s2">
-                                                                <h5>Discount Notifications</h5>
-                                                                <div class="de-switch">
-                                                                  <input type="checkbox" id="notif-item-sold" class="checkbox">
-                                                                  <label for="notif-item-sold"></label>
-                                                                </div>
-                                                                <div class="clearfix"></div>
-                                                                <p class="p-info">You'll get notification while new discount available.</p>
-                                                            </div>
 
-                                                            <div class="spacer-20"></div>
-
-                                                            <div class="switch-with-title s2">
-                                                                <h5>New Product Notification</h5>
-                                                                <div class="de-switch">
-                                                                  <input type="checkbox" id="notif-bid-activity" class="checkbox">
-                                                                  <label for="notif-bid-activity"></label>
-                                                                </div>
-                                                                <div class="clearfix"></div>
-                                                                <p class="p-info">You'll get notification while new product available.</p>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="col-md-6">
-                                                            <div class="switch-with-title s2">
-                                                                <h5>Daily Reports</h5>
-                                                                <div class="de-switch">
-                                                                  <input type="checkbox" id="notif-auction-expiration" class="checkbox">
-                                                                  <label for="notif-auction-expiration"></label>
-                                                                </div>
-                                                                <div class="clearfix"></div>
-                                                                <p class="p-info">We will send you a report everyday.</p>
-                                                            </div>
-
-                                                            <div class="spacer-20"></div>
-
-                                                            <div class="switch-with-title s2">
-                                                                <h5>Monthly Reports</h5>
-                                                                <div class="de-switch">
-                                                                  <input type="checkbox" id="notif-outbid" class="checkbox">
-                                                                  <label for="notif-outbid"></label>
-                                                                </div>
-                                                                <div class="clearfix"></div>
-                                                                <p class="p-info">We will send you a report each month.</p>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="spacer-20"></div>
-                                                    </div>
-                                                </div>
 
                                             </div>
                                         </div>
 
-                                        <input type="button" id="submit" class="btn-main" value="Update profile">
+                                        <input type="submit" id="submit" class="btn-main" value="Update profile">
                                         </form>
                                     </div>
                                 </div>
