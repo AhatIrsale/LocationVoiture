@@ -128,3 +128,4 @@ def client1_update(request, pk):
         return redirect('update', pk=pk)
 
     return render(request, 'Profil.html', {'client1': client1})
+
