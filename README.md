@@ -24,7 +24,7 @@ Tout d’abord on as commencé  par crée l’environnement de travail , on as d
 # Conclusion :
 
 Vraiment, ce projet a été une belle expérience sous pression qui nous a menez à tester nos pouvoir en tant que groupe, et levez le défi de temps, et presque c’est réussi vu notre travail collaboratif et nos connaissances technique acquises.
-Un grand Merci au prof qui nous a fait plonge dans cette plage du développement web Python-Django avec ses orientations Efficaces.
+Un grand Merci au prof qui nous a fait plonge dans cet océan  du développement web Python-Django avec ses orientations Efficaces.
 
 
 
