@@ -15,8 +15,8 @@ Tout d’abord on as commencé  par crée l’environnement de travail , on as d
 
 # Problèmes Rencontrées :
 
--Temps, le temps n’était pas suffisant pour avoir un site complet
--Connaissance Technique, on as bien but découvrir beaucoup de chose dans django comme (context_processors.py, dossier Templatetags et fichier custom_filters.py qui permet de gérer le format de mot de passe)
+-Temps, le temps n’était pas suffisant pour avoir un site complet.
+-Connaissance Technique, on as bien but découvrir beaucoup de chose dans django comme (context_processors.py, dossier Templatetags et fichier custom_filters.py qui permet de gérer le format de mot de passe).
 -Blocage de Migrations on as était censé de changer tout le projet vu le blogage de fichier de migrations sous le message de « Vous avez 18migrations non passes »
 
 
