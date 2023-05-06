@@ -2,7 +2,7 @@
 
 # Description:
 
-Notre Application Rentaly Car un site Web personnalisée bien stylée qui permet a toute personne de consulter une luxueuse voiture et voir toute ses détails( portes, fenêtres , bagage, moteur ,type : carrosserie …) , il pourra aussi effectuer une réservation de location de cette voiture mais à condition qu’elle soit inscrit  ainsi qu’il pourra consulter et modifier son profil et consulter quelque interfaces concernant l’entreprise comme About pour voir les commentaires de nos client a propos leur expériences avec nous. 
+Notre Application Rentaly Car est un site Web personnalisée bien stylée qui permet a toute personne de consulter une luxueuse voiture et voir toute ses détails( portes, fenêtres , bagage, moteur ,type : carrosserie …) , il pourra aussi effectuer une réservation de location de cette voiture mais à condition qu’elle soit inscrit  ainsi qu’il pourra consulter et modifier son profil et consulter quelque interfaces concernant l’entreprise comme About pour voir les commentaires de nos client a propos leur expériences avec nous. 
  Notre site est bien contrôlé d’un système d’authentification, si l’utilisateur n’est pas authentifié il pourra pas accéder a aucun de nos services sauf la galerie de voitures.
 
 
